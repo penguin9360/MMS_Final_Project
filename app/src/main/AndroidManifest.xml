@@ -9,6 +9,11 @@
         android:roundIcon="@drawable/ic_plant"
         android:supportsRtl="true"
         android:theme="@style/Theme.PlantAppUI.NoActionBar">
+        <activity
+            android:name=".FavoriteListActivity"
+            android:exported="false"
+            android:label="@string/title_activity_favorite_list"
+            android:theme="@style/Theme.PlantAppUI.NoActionBar.NoActionBar" />
         <activity android:name=".menu.home.HomeDetailActivity" />
         <activity
             android:name=".MainActivity"

@@ -30,4 +30,13 @@
         <item name="android:textSize">18sp</item>
         <item name="tint">@android:color/black</item>
     </style>
+
+    <style name="Theme.PlantAppUI.NoActionBar.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.PlantAppUI.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.PlantAppUI.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

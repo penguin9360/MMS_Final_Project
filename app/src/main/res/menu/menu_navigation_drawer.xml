@@ -2,25 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_weeds"
-            android:icon="@drawable/ic_weed"
-            android:title="Weeds" />
+            android:id="@+id/my_lib_drawer"
+            android:icon="@drawable/ic_baseline_library_add_check_24"
+            android:title="My Library" />
         <item
-            android:id="@+id/nav_insects"
-            android:icon="@drawable/ic_bug"
-            android:title="Insects" />
+            android:id="@+id/my_location_drawer"
+            android:icon="@drawable/ic_baseline_location_on_24"
+            android:title="My Locations" />
         <item
-            android:id="@+id/nav_diseases"
-            android:icon="@drawable/ic_spray"
-            android:title="Diseases" />
-        <item
-            android:id="@+id/nav_products"
-            android:icon="@drawable/ic_pot"
-            android:title="Products" />
-
-        <item
-            android:id="@+id/nav_help"
-            android:icon="@drawable/ic_help"
-            android:title="Help" />
+            android:id="@+id/my_favorite_drawer"
+            android:icon="@drawable/ic_baseline_favorite_border_24"
+            android:title="My favorite" />
     </group>
 </menu>
