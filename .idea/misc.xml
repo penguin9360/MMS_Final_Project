@@ -17,16 +17,22 @@
         <entry key="app/src/main/res/drawable/ic_help.xml" value="0.2604166666666667" />
         <entry key="app/src/main/res/drawable/ic_password.xml" value="0.440625" />
         <entry key="app/src/main/res/drawable/ic_weed.xml" value="0.2604166666666667" />
-        <entry key="app/src/main/res/layout/activity_favorite_list.xml" value="0.4244791666666667" />
+        <entry key="app/src/main/res/layout/activity_favorite_list.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/layout/activity_home_detail.xml" value="0.26458333333333334" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.4244791666666667" />
+        <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/content_scrolling.xml" value="0.4244791666666667" />
         <entry key="app/src/main/res/layout/featured_plants_item.xml" value="0.24427083333333333" />
+        <entry key="app/src/main/res/layout/fragment_camera.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.4244791666666667" />
         <entry key="app/src/main/res/layout/fragment_favorite_2.xml" value="0.4244791666666667" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.24427083333333333" />
+        <entry key="app/src/main/res/layout/fragment_map.xml" value="0.41041666666666665" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/group_item.xml" value="0.24427083333333333" />
+        <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.24427083333333333" />
+        <entry key="app/src/main/res/layout/recommended_item.xml" value="0.24427083333333333" />
+        <entry key="app/src/main/res/layout/slide_images_detail_product.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/menu/menu_edit_profile.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/menu/menu_favorite_list.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/menu/menu_navigation_drawer.xml" value="0.24427083333333333" />

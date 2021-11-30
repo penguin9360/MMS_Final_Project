@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center_horizontal"
-            android:text="Plant App UI"
+            android:text="Creature Identification"
             android:textColor="@android:color/white"
             android:textSize="15sp"
             android:textStyle="bold" />
@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="15dp"
-            android:text="plantappui@gmail.com"
+            android:text="Multimedia Systems Fall 2021"
             android:textColor="@android:color/white"
             android:textSize="12sp" />
 
