@@ -80,7 +80,7 @@ public class NetworkActivity extends AppCompatActivity {
             progressDialog.setTitle("Please Wait...");
             progressDialog.show();
 
-            StorageReference reference = storageReference.child("picture/"+ UUID.randomUUID().toString());
+            StorageReference reference = storageReference.child(UUID.randomUUID().toString());
 
             try {
                 reference.putFile(imgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
