@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#33c5c9cc"
+    android:paddingStart="60dp"
+    android:paddingEnd="60dp"
+    android:orientation="vertical"
+    tools:context=".NetworkActivity">
+
+    <Button
+        android:id="@+id/btn_upload"
+        android:layout_width="293dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="#ffffff"
+        android:text="UPLOAD" />
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="295dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#32BDAC"
+        android:text="SAVE"
+        android:textColor="#ffffff" />
+
+    <ImageView
+        android:id="@+id/img_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"/>
+
+
+</LinearLayout>

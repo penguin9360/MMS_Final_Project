@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PlantAppUI.NoActionBar">
         <activity
+            android:name=".NetworkActivity"
+            android:exported="false"
+            android:label="@string/title_activity_network"
+            android:theme="@style/Theme.PlantAppUI.NoActionBar.NoActionBar" />
+        <activity
             android:name=".FavoriteListActivity"
             android:exported="false"
             android:label="@string/title_activity_favorite_list"

@@ -76,6 +76,10 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.nav_camera:
                     fragment = new CameraFragment();
                     break;
+                case R.id.nav_network:
+                    Intent intent = new Intent(getApplicationContext(), NetworkActivity.class);
+                    startActivity(intent);
+                    break;
             }
 
             if (fragment != null) {

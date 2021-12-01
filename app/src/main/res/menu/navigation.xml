@@ -9,12 +9,17 @@
     <item
         android:id="@+id/nav_map"
         android:icon="@drawable/ic_baseline_my_location_24"
-        android:title="Where am I"/>
+        android:title="Location"/>
 
     <item
         android:id="@+id/nav_camera"
         android:icon="@drawable/ic_baseline_linked_camera_24"
-        android:title="What it is"/>
+        android:title="Take Photo"/>
+
+    <item
+        android:id="@+id/nav_network"
+        android:icon="@drawable/ic_baseline_cloud_upload_24"
+        android:title="Upload Photo"/>
 
 
 </menu>
