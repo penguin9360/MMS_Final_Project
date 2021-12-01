@@ -52,7 +52,6 @@ public class MapFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapView);
-//        mapFragment.getMapAsync(callback);
         if (mapFragment != null) {
             mapFragment.getMapAsync(callback);
         }
