@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:background="#ffffff"
-        android:text="UPLOAD" />
+        android:text="Select Image" />
 
     <Button
         android:id="@+id/btn_save"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="#32BDAC"
-        android:text="SAVE"
+        android:text="Upload"
         android:textColor="#ffffff" />
 
     <ImageView
