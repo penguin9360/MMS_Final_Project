@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         animatedBottomBar.setOnTabSelectListener((lastIndex, lastTab, newIndex, newTab) -> {
             Fragment fragment = null;
+            boolean no_need_for_frag = false;
             switch (newTab.getId()) {
                 case R.id.nav_menu_home:
                     fragment = new HomeFragment();
@@ -79,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.nav_network:
                     Intent intent = new Intent(getApplicationContext(), NetworkActivity.class);
                     startActivity(intent);
+                    no_need_for_frag = true;
                     break;
             }
 
@@ -87,7 +89,9 @@ public class MainActivity extends AppCompatActivity {
                 fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment)
                         .commit();
             } else {
-                Log.e(TAG, "Error in creating Fragment");
+                if (!no_need_for_frag) {
+                    Log.e(TAG, "Error in creating Fragment");
+                }
             }
         });
 

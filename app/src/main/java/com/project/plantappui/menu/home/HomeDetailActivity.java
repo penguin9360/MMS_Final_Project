@@ -1,24 +1,20 @@
 package com.project.plantappui.menu.home;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
-import androidx.viewpager.widget.ViewPager;
-
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.ViewPager;
 
 import com.project.plantappui.R;
 import com.project.plantappui.adapter.HomeDetailAdapter;
-import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 
 import java.util.ArrayList;
@@ -26,10 +22,12 @@ import java.util.List;
 
 public class HomeDetailActivity extends AppCompatActivity {
     private ImageButton buttonBack;
+    private Button buttonDescription;
     private final List<Integer> imagesList = new ArrayList<>();
     private ViewPager viewPager;
     private HomeDetailAdapter adapter;
     private WormDotsIndicator dotsIndicator;
+    FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +38,16 @@ public class HomeDetailActivity extends AppCompatActivity {
         setViews();
         initViews();
         initData();
+
+        buttonDescription.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragmentManager = getSupportFragmentManager();
+                DetailFragment detailFragment = new DetailFragment();
+                fragmentManager.beginTransaction().replace(R.id.detail_fragment_container, detailFragment)
+                        .commit();
+            }
+        });
     }
 
     @SuppressLint("ObsoleteSdkInt")
@@ -59,6 +67,7 @@ public class HomeDetailActivity extends AppCompatActivity {
 
     private void setViews() {
         buttonBack  = findViewById(R.id.button_back);
+        buttonDescription = findViewById(R.id.button_description);
         viewPager   = findViewById(R.id.view_pager);
     }
 
