@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:background="#ffffff"
-        android:text="UPLOAD" />
+        android:text="SELECT IMAGE" />
 
     <Button
         android:id="@+id/btn_save"
@@ -24,14 +24,26 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="#32BDAC"
-        android:text="SAVE"
+        android:text="UPLOAD"
         android:textColor="#ffffff" />
 
     <ImageView
         android:id="@+id/img_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"/>
+        android:layout_height="274dp"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:id="@+id/name_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/description_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="152dp"
+        android:text="" />
 
 
 </LinearLayout>
