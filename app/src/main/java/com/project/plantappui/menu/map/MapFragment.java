@@ -1,5 +1,9 @@
 package com.project.plantappui.menu.map;
 
+/**  Google Map using SupportMapFragment container
+ *   zihui 11.30
+ */
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,10 +29,12 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import com.project.plantappui.R;
 
-/*  Google Map using SupportMapFragment container
-    Zihui 12.02
-* */
-public class MapFragment extends Fragment implements OnMapReadyCallback {
+public class MapFragment extends Fragment
+        implements
+        OnMapReadyCallback,
+        GoogleMap.OnMyLocationButtonClickListener,
+        GoogleMap.OnMyLocationClickListener,
+        ActivityCompat.OnRequestPermissionsResultCallback{
     private GoogleMap map;
 
     /**
@@ -81,13 +87,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-//        super.onViewCreated(view, savedInstanceState);
-//        SupportMapFragment mapFragment =
-//                (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
-//        if (mapFragment != null) {
-//            mapFragment.getMapAsync(callback);
-//        }
-
         super.onViewCreated(view, savedInstanceState);
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
@@ -122,6 +121,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     }
 
+    /** MyLocation functions
+     *  ---Start---
+     * */
+
     /**
      * Enables the My Location layer if the fine location permission has been granted.
      */
@@ -137,5 +140,37 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                     Manifest.permission.ACCESS_FINE_LOCATION, true);
         }
     }
+
+    @Override
+    public boolean onMyLocationButtonClick() {
+        Toast.makeText(getContext(), "MyLocation button clicked", Toast.LENGTH_SHORT).show();
+        // Return false so that we don't consume the event and the default behavior still occurs
+        // (the camera animates to the user's current position).
+        return false;
+    }
+
+    @Override
+    public void onMyLocationClick(@NonNull Location location) {
+        Toast.makeText(getContext(), "Current location:\n" + location, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode != LOCATION_PERMISSION_REQUEST_CODE) {
+            return;
+        }
+
+        if (PermissionUtils.isPermissionGranted(permissions, grantResults, Manifest.permission.ACCESS_FINE_LOCATION)) {
+            // Enable the my location layer if the permission has been granted.
+            enableMyLocation();
+        } else {
+            // Permission was denied. Display an error message
+            // Display the missing permission error dialog when the fragments resume.
+            permissionDenied = true;
+        }
+    }
+    /** MyLocation functions
+     *  --- End ---
+     * */
 
 }
