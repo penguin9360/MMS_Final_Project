@@ -7,6 +7,13 @@
     android:background="@color/white_ghost"
     tools:context=".menu.home.HomeDetailActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="589dp"
+        android:orientation="vertical">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <ImageButton
         android:id="@+id/button_back"
         android:layout_width="60dp"
@@ -79,7 +86,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/bg_home_detail_picture"
-            android:elevation="50dp" />
+            android:elevation="50dp" >
+
+            <FrameLayout
+                android:id="@+id/detail_fragment_container"
+                android:layout_width="410dp"
+                android:layout_height="534dp"
+                android:layout_marginTop="?android:actionBarSize" />
+        </androidx.viewpager.widget.ViewPager>
     </androidx.cardview.widget.CardView>
 
     <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
