@@ -40,6 +40,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 
 public class NetworkActivity extends AppCompatActivity {
@@ -70,6 +71,7 @@ public class NetworkActivity extends AppCompatActivity {
         imageView =findViewById(R.id.img_view);
         name_text_view = findViewById(R.id.name_text_view);
         description_text_view = findViewById(R.id.description_text_view);
+
 
         btnSave.setEnabled(false);
 
@@ -102,7 +104,8 @@ public class NetworkActivity extends AppCompatActivity {
             progressDialog.setTitle("Please Wait...");
             progressDialog.show();
 
-            filePath = UUID.randomUUID().toString();
+            filePath = UUID.randomUUID().toString().substring(0, 8);
+            System.out.println("filePath: | " + filePath);
             StorageReference reference = upload_reference.child(filePath);
 
             try {
@@ -111,14 +114,14 @@ public class NetworkActivity extends AppCompatActivity {
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         progressDialog.dismiss();
                         Toast.makeText(NetworkActivity.this, "uploaded Successfully", Toast.LENGTH_SHORT).show();
-                        // getReseults();
-                        downloadFile();
+                        download_and_parse();
+
                     }
                 })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(NetworkActivity.this, "Error Occurred" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(NetworkActivity.this, "Error Occurred: " + e.getMessage(), Toast.LENGTH_SHORT).show();
 
                             }
                         }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -137,94 +140,70 @@ public class NetworkActivity extends AppCompatActivity {
         }
     }
 
-    private void downloadFile() {
+    private void download_and_parse() {
+        // @TODO - Use a check-and-wait approach instead of brute force waiting
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //System.out.println("------------------Downloading JSSSSSSSSSSSSSSOOOOOOOOOOOONNNNNNNNNN--------------");
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReference("/" + filePath + ".json");
-        System.out.println("storageRef: | " + storageRef.toString());
+        StorageReference storageRef = storage.getReference().child(filePath + ".json");
+        //System.out.println("storageRef: | " + storageRef.toString());
 
         File rootPath = new File(Environment.getExternalStorageDirectory(), "download_data");
         if (!rootPath.exists()) {
             rootPath.mkdirs();
-            // System.out.println("rootPath is :   | " + rootPath.toString());
+            //System.out.println("rootPath is :   | " + rootPath.toString());
         }
 
-        final File localFile = new File(rootPath, filePath + ".json");
-
-        storageRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                Log.e("firebase ", ";local tem file created  created " + localFile.toString());
-                //  updateDb(timestamp,localFile.toString(),position);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                Log.e("firebase ", ";local tem file not created  created " + exception.toString());
-            }
-        });
-    }
-
-    private void getReseults() {
-        return_reference = FirebaseStorage.getInstance().getReference().child(filePath);
+        final File localFile;
         try {
-            final File localFile = File.createTempFile(filePath, ".json");
-
-            return_reference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+            localFile = File.createTempFile(filePath , ".json");
+            // System.out.println("localFile is :   | " + localFile.toString());
+            storageRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(NetworkActivity.this, "Retrieved Successfully", Toast.LENGTH_SHORT).show();
+                    //Log.e("JSON download |", "JSON successfully downloaded. |" + localFile.toString());
+                    print_file(localFile);
 
+                    // parsing JSON
                     JSONParser parser = new JSONParser();
-                    JSONObject jsonObj = null;
-//                    try {
-//                        jsonObj = (JSONObject) parser.parse(new FileReader(localFile.getAbsolutePath()));
-//                    } catch (IOException | ParseException e) {
-//                        e.printStackTrace();
-//                    }
-//                    System.out.println("local file path: " + localFile.getAbsolutePath());
-//                    String plant_name = null;
-//                    String plant_description = null;
-//                    try {
-//                        plant_name = jsonObj.getString("name");
-//                        name_text_view.setText(plant_name);
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//                    try {
-//                        plant_description = jsonObj.getString("discription");
-//                        description_text_view.setText(plant_description);
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-                    try (BufferedReader br = new BufferedReader(new FileReader(localFile.getAbsolutePath()))) {
-                        String line;
-                        while ((line = br.readLine()) != null) {
-                            System.out.println(line);
-                        }
-                    } catch (IOException e) {
+                    org.json.simple.JSONObject jsonObj = null;
+                    try {
+                        jsonObj = (org.json.simple.JSONObject) parser.parse(new FileReader(localFile.getAbsolutePath()));
+                    } catch (IOException | ParseException e) {
                         e.printStackTrace();
                     }
+                    //System.out.println("local file path: " + localFile.getAbsolutePath());
+                    String plant_name = null;
+                    String plant_description = null;
+                    assert jsonObj != null;
+                    plant_name = Objects.requireNonNull(jsonObj.get("name")).toString();
+                    name_text_view.setText(plant_name);
+                    plant_description = Objects.requireNonNull(jsonObj.get("discription")).toString();
+                    description_text_view.setText(plant_description);
 
-
-                    // Getting JSON Array node
-//                    JSONArray plant_name = null;
-//                    try {
-//                        plant_name = jsonObj.getJSONArray("name");
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//
-//                    // looping through All Contacts
-//                    for (int i = 0; i < plant_name.length(); i++) {
-//                        JSONObject c = contacts.getJSONObject(i);
-//                        String id = c.getString("id");
-//                        String name = c.getString("name");
-//                        String email = c.getString("email");
-//                        String address = c.getString("address");
-//                        String gender = c.getString("gender");
-//                    }
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    //Log.e("JSON download |", "Failed to download JSON: |" + exception.toString());
                 }
             });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void print_file(File file) {
+        try (BufferedReader br = new BufferedReader(new FileReader(file.getAbsolutePath()))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
