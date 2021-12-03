@@ -76,7 +76,6 @@ public class MapFragment extends Fragment
 //
 //    };
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -98,9 +97,14 @@ public class MapFragment extends Fragment
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         map = googleMap;
+
+        // Leiden default when open the map
         LatLng Leiden = new LatLng(52.160114, 4.497010);
         map.addMarker(new MarkerOptions().position(Leiden).title("Marker in Leiden"));
         map.moveCamera(CameraUpdateFactory.newLatLng(Leiden));
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(Leiden,14F));  // default zoom level
+        map.setPadding(0,0,0, (int) (this.getView().getHeight()*0.2)); // move the [zoom control] a bit higher
+
 
         // Location
 //        map.setOnMyLocationButtonClickListener(this);
