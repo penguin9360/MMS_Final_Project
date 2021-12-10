@@ -147,11 +147,14 @@ public class NetworkActivity extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+
+
+
         //System.out.println("------------------Downloading JSSSSSSSSSSSSSSOOOOOOOOOOOONNNNNNNNNN--------------");
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference().child(filePath + ".json");
         //System.out.println("storageRef: | " + storageRef.toString());
-
         File rootPath = new File(Environment.getExternalStorageDirectory(), "download_data");
         if (!rootPath.exists()) {
             rootPath.mkdirs();
@@ -185,10 +188,12 @@ public class NetworkActivity extends AppCompatActivity {
                     plant_description = Objects.requireNonNull(jsonObj.get("discription")).toString();
                     description_text_view.setText(plant_description);
 
+
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception exception) {
+
                     //Log.e("JSON download |", "Failed to download JSON: |" + exception.toString());
                 }
             });
@@ -197,6 +202,7 @@ public class NetworkActivity extends AppCompatActivity {
         }
 
     }
+
 
     public void print_file(File file) {
         try (BufferedReader br = new BufferedReader(new FileReader(file.getAbsolutePath()))) {

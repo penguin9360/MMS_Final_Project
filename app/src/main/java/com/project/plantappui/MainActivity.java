@@ -26,10 +26,15 @@ import androidx.fragment.app.FragmentManager;
 //@TODO experiment with this official Google MapFragment. For debugging purposes stick with the placeholder below
 // import com.google.android.gms.maps.MapFragment;
 import com.google.android.material.navigation.NavigationView;
-import com.project.plantappui.menu.camera.CameraFragment;
 import com.project.plantappui.menu.map.MapFragment;
 import com.project.plantappui.menu.home.HomeFragment;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,11 +50,11 @@ public class MainActivity extends AppCompatActivity {
 
     /* for location */
     // store longitude and latitude
-    Map<String, Double> locationMap = new HashMap<String, Double>(){
+    public static Map<String, Double> locationMap = new HashMap<String, Double>(){
         {put("longitude", -1.0);
-        put("latitude", -1.0);}
+            put("latitude", -1.0);}
     };
-    private LocationManager locationManager;
+    private static LocationManager locationManager;
     private String provider;// position provider
 
 
@@ -64,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
         getLocation();
         // test: show position
-        Toast.makeText(getApplicationContext(), locationMap.get("longitude")+","+locationMap.get("latitude"),Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), locationMap.get("longitude")+","+locationMap.get("latitude"),Toast.LENGTH_LONG).show();
 
     }
 
@@ -100,7 +105,9 @@ public class MainActivity extends AppCompatActivity {
                     fragment = new MapFragment();
                     break;
                 case R.id.nav_camera:
-                    fragment = new CameraFragment();
+                    Intent intent_cam = new Intent(getApplicationContext(), CameraActivity.class);
+                    startActivity(intent_cam);
+                    no_need_for_frag = true;
                     break;
                 case R.id.nav_network:
                     Intent intent = new Intent(getApplicationContext(), NetworkActivity.class);
@@ -143,14 +150,18 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.my_favorite_drawer:
                         Pesan("Menu My Favorite");
-                        Intent intent = new Intent(getApplicationContext(), FavoriteListActivity.class);
-                        startActivity(intent);
+                        Intent intent_fav = new Intent(getApplicationContext(), FavoriteListActivity.class);
+                        startActivity(intent_fav);
                         break;
                     case R.id.my_location_drawer:
                         Pesan("Menu My Locations");
+                        Intent intent_loc = new Intent(getApplicationContext(), LocationListActivity.class);
+                        startActivity(intent_loc);
                         break;
                     case R.id.my_lib_drawer:
                         Pesan("Menu My Library");
+                        Intent intent_lib = new Intent(getApplicationContext(), LibraryListActivity.class);
+                        startActivity(intent_lib);
                         break;
                 }
 
@@ -234,7 +245,6 @@ public class MainActivity extends AppCompatActivity {
             locationMap.put("latitude", location.getLatitude());
         }
     };
-    /*----------- Location relevant - end --------------*/
 
     protected void onDestroy() {
         super.onDestroy();
@@ -242,6 +252,9 @@ public class MainActivity extends AppCompatActivity {
             locationManager.removeUpdates(locationListener);
         }
     };
+    /*----------- Location relevant - end --------------*/
+
+
 
 
 }

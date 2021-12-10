@@ -27,7 +27,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/nunito_bold"
-                android:text="Your Favorite"
+                android:text="My Favorite"
                 android:textColor="@color/white"
                 android:textSize="25sp" />
 
@@ -76,7 +76,7 @@
                             android:fontFamily="@font/nunito_bold"
                             android:lines="2"
                             android:maxLines="2"
-                            android:text="Angelica Archangelica Flower"
+                            android:text="Plant 1"
                             android:textColor="@color/dark_late_gray"
                             android:textSize="18sp" />
 
@@ -88,7 +88,7 @@
                             android:fontFamily="@font/nunito_bold"
                             android:lines="1"
                             android:maxLines="1"
-                            android:text="Russia"
+                            android:text="Description"
                             android:textColor="@color/black_soft"
                             android:textSize="14sp" />
 
@@ -98,7 +98,7 @@
                             android:layout_gravity="end"
                             android:layout_marginEnd="20dp"
                             android:background="@drawable/bg_button"
-                            android:text="Buy Now"
+                            android:text="E-commerce Link"
                             android:textAllCaps="false" />
                     </LinearLayout>
                 </LinearLayout>
@@ -141,7 +141,7 @@
                             android:fontFamily="@font/nunito_bold"
                             android:lines="2"
                             android:maxLines="2"
-                            android:text="Armeria Maritima Flower"
+                            android:text="Plant 2"
                             android:textColor="@color/dark_late_gray"
                             android:textSize="18sp" />
 
@@ -153,7 +153,7 @@
                             android:fontFamily="@font/nunito_bold"
                             android:lines="1"
                             android:maxLines="1"
-                            android:text="Italy"
+                            android:text="Description"
                             android:textColor="@color/black_soft"
                             android:textSize="14sp" />
 
@@ -163,7 +163,7 @@
                             android:layout_gravity="end"
                             android:layout_marginEnd="20dp"
                             android:background="@drawable/bg_button"
-                            android:text="Buy Now"
+                            android:text="E-Commerce Link"
                             android:textAllCaps="false" />
                     </LinearLayout>
                 </LinearLayout>

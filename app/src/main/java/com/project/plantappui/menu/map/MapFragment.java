@@ -27,6 +27,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import com.project.plantappui.MainActivity;
 import com.project.plantappui.R;
 
 public class MapFragment extends Fragment
@@ -92,6 +93,7 @@ public class MapFragment extends Fragment
         if (mapFragment != null) {
             mapFragment.getMapAsync(this);
         }
+
     }
 
     @Override
