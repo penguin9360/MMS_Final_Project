@@ -1,6 +1,4 @@
----
-typora-root-url: ./Figures
----
+
 
 # Backend Deployment
 
@@ -10,7 +8,7 @@ typora-root-url: ./Figures
 
 For deploying the backend code, we should firstly create a Google Cloud Platform Project.
 
-![creat_project](/creat_project.png)
+![creat_project](https://github.com/penguin9360/MMS_Final_Project/blob/main/Backend/Figures/creat_project.png?raw=true)
 
 
 
@@ -18,7 +16,7 @@ For deploying the backend code, we should firstly create a Google Cloud Platform
 
 After we have created a project in GCP, we can create a project in firebase for deploying our Android App. When we open the creating project page, there will be a button to directly link to the GCP project. We can click this button.
 
-
+![creat_project](https://github.com/penguin9360/MMS_Final_Project/blob/main/Backend/Figures/firebase.png)
 
 After creating projetc, we can set a storage bucket in firebase.
 
