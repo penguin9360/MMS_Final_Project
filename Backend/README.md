@@ -33,7 +33,6 @@ As the default set, an authentication is needed to connect firebase from fronten
 But in order to test the program more easily, we temporally allow all access request. So the rule should be changed as followed.
 
 ![creat_project](https://github.com/penguin9360/MMS_Final_Project/blob/main/Backend/Figures/firebase_store3.png)
-![creat_project](https://github.com/penguin9360/MMS_Final_Project/blob/main/Backend/Figures/firebase_store4.png)
 
 ## (3) Cloud Function Deployment
 
